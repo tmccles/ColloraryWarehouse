@@ -6,7 +6,7 @@ from ProductItem import ProductItem
 #The initial capacity will be set to 1,000
 
 class ChainingHashTable(HashTable):
-    def _init_(self, initialCapacity=1000):
+    def _init_(self, initialCapacity=11):
         self.table= [None] * initialCapacity
         item= ProductItem()
 
@@ -18,7 +18,7 @@ class ChainingHashTable(HashTable):
     #Return True if product is appended or quantity updated
     def insert (self, key, name, category, quantity):
         #Calculates the hash key for the bucket index
-        bucket_index= self.ProductHashKey(key) % len(self.table)
+        bucket_index= self.HashKey(key) % len(self.table)
 
         #traverse the linked list if the product already exist, do not append the
         #product simply increment the quantity
@@ -42,7 +42,7 @@ class ChainingHashTable(HashTable):
     #Traverse the linked list to find key/product pair
     def remove(self, key):
         #get bucket index to start traversing the linked list
-        bucket_index= self.ProductHashKey(key) % len(self.table)
+        bucket_index= self.HashKey(key) % len(self.table)
         item= self.table[bucket_index]
         previous= None
         while item != None:
@@ -59,7 +59,7 @@ class ChainingHashTable(HashTable):
     #Find a specific key and print product information
     def search(self, key):
         #calculate hash key to start search
-        bucket_index= self.ProductHashKey(key) % len(self.table)
+        bucket_index= self.HashKey(key) % len(self.table)
         item= self.table[bucket_index]
         while item != None:
             if key== item.Key:
@@ -73,7 +73,7 @@ class ChainingHashTable(HashTable):
     #Update product quantity amount, when a product is remove from inventory
     def updateQuantity(self, key, quantityRemove):
         #calculate hash key
-        bucket_index= self.ProductHashKey(key)% len(self.table)
+        bucket_index= self.HashKey(key)% len(self.table)
         item= self.table[bucket_index]
         while item != None:
             if key== item.Key and item.Quantity != 0:
