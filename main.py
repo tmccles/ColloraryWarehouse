@@ -27,7 +27,7 @@ print("Table has been successfully populated")
 removal= products.remove(110)
 if removal== True:
     print("Item was successfully remove from table")
-elif removal== False:
+else:
     print("Item was not remove from table")
 
 #test the search function of the hash table
