@@ -53,6 +53,9 @@ class ChainingHashTable(HashTable):
                 else:
                     previous.next= item.next
                 return True
+                
+                item.next= None #garbage collection
+                return True
             previous= item
             item= item.next
         return False #key was not located in linked list
