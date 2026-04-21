@@ -9,7 +9,7 @@ class ChainingHashTable(HashTable):
     def __init__(self):
         self.initialCapacity= 1000
         self.table= [None] *self.initialCapacity
-        item= ProductItem()
+        
 
     def _len_(self):
         return len(self.table)
