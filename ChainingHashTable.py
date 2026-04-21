@@ -27,16 +27,16 @@ class ChainingHashTable(HashTable):
         previous= None
         while item !=None:
             if key== item.Key:
-                item.Quantity= item.Quantity +1
-            return True
+                item.Quantity += quantity
+                return True
             previous= item
             item= item.next
             
         #if it is not a duplicate key append new key to linked list
         if self.table[bucket_index]==None:
-            self.table[bucket_index]= item(key, name,category,quantity)
+            self.table[bucket_index]= ProductItem(key, name, category, quantity)
         else:
-            previous.next= item(key,name,category,quantity)
+            previous.next= ProductItem(key,name,category,quantity)
         return True
     
     #Remove an item from the hash table
