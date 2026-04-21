@@ -24,7 +24,7 @@ print("Table has been successfully populated")
 
 
 #test that an item has been successfully remove from the table
-removal= products.remove(110)
+removal= products.remove("110")
 if removal== True:
     print("Item was successfully remove from table")
 else:
