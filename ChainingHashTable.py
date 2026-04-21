@@ -6,7 +6,7 @@ from ProductItem import ProductItem
 #The initial capacity will be set to 1,000
 
 class ChainingHashTable(HashTable):
-    def _init_(self):
+    def __init__(self):
         self.initialCapacity= 1000
         self.table= [None] *self.initialCapacity
         item= ProductItem()
