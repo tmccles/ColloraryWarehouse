@@ -70,7 +70,7 @@ class ChainingHashTable(HashTable):
                 print("Product: ", item.Name)
                 print("Category: ", item.Category)
                 print("Quantity: ", item.Quantity)
-                return item.Key
+                return item
             item= item.next
         return None #product not found
     
