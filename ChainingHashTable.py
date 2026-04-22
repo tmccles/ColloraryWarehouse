@@ -17,7 +17,7 @@ class ChainingHashTable(HashTable):
     #Insert a new product into the hash table
     #Check for duplicate, if found increase product quantity by one
     #Return True if product is appended or quantity updated
-    def insert (self, key, name, category, quantity):
+    def insert (self, key, name, category, quantity, cost):
         #Calculates the hash key for the bucket index
         bucket_index= self.HashKey(key) % len(self.table)
 
@@ -34,9 +34,9 @@ class ChainingHashTable(HashTable):
             
         #if it is not a duplicate key append new key to linked list
         if self.table[bucket_index]==None:
-            self.table[bucket_index]= ProductItem(key, name, category, quantity)
+            self.table[bucket_index]= ProductItem(key, name, category, quantity, cost)
         else:
-            previous.next= ProductItem(key,name,category,quantity)
+            previous.next= ProductItem(key,name,category,quantity, cost)
         return True
     
     #Remove an item from the hash table
@@ -70,6 +70,7 @@ class ChainingHashTable(HashTable):
                 print("Product: ", item.Name)
                 print("Category: ", item.Category)
                 print("Quantity: ", item.Quantity)
+                print("Cost: ", item.Cost)
                 return item
             item= item.next
         return None #product not found

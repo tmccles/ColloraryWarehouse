@@ -5,9 +5,10 @@ from HashTable import HashTable
 #This is designed for the chaining technique
 
 class ProductItem:
-    def __init__(self, ProductKey, ProductName, ProductCategory, ProductQuantity):
+    def __init__(self, ProductKey, ProductName, ProductCategory, ProductQuantity,ItemCost):
         self.Key= ProductKey
         self.Name= ProductName
         self.Category= ProductCategory
         self.Quantity= ProductQuantity
+        self.Cost= ItemCost
         self.next= None
