@@ -82,12 +82,17 @@ class ChainingHashTable(HashTable):
         while item != None:
             if key== item.Key and item.Quantity != 0:
                 #ERROR HANDLING: Removing more products than what is available
-                if item.Key < quantityRemove:
+                if item.Quantity < quantityRemove:
                     print("ERROR: TRYING TO REMOVE TOO MANY ITEMS")
                     print("CURRENTLY AVAILABLE: ", item.Quantity)
-                else:
-                    item.Quantity= item.Quantity- quantityRemove
-            #Show new product quantity after update perform
-            print("Product Quantity: ", item.Quantity)
+                    return False
+                
+                item.Quantity-= quantityRemove
+                #Show new product quantity after update perform
+                print("Product Quantity: ", item.Quantity)
+                return True
+            item= item.next
+        print("ERROR: PRODUCT NOT FOUND")
+        return False
          
 
