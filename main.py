@@ -33,5 +33,5 @@ else:
 #test the search function of the hash table
 products.search(564)
 
-products.updateQuantity(345)
+products.updateQuantity(345, 10)
 
