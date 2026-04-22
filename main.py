@@ -36,5 +36,6 @@ products.search(564)
 products.decreaseQuantity(345, 10)
 products.restock(135,100)
 print("  ")
-print("The total number of products in inventory: ", products.totalNumberProduct())
+totalNumber= products.totalNumberProduct()
+print("The total number of products in inventory: ", totalNumber)
 

@@ -123,6 +123,7 @@ class ChainingHashTable(HashTable):
     
     #Returns the total amount of products in hashtable
     def totalNumberProduct():
-        return len(self.table)
+        total= len(self.table)
+        return total
          
 
