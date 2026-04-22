@@ -32,6 +32,7 @@ else:
 
 #test the search function of the hash table
 products.search(564)
-
-products.updateQuantity(345, 10)
+#test inventory levels of a product
+products.decreaseQuantity(345, 10)
+products.restock(135,100)
 

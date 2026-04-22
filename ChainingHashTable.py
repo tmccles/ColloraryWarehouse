@@ -75,7 +75,7 @@ class ChainingHashTable(HashTable):
         return None #product not found
     
     #Update product quantity amount, when a product is remove from inventory
-    def updateQuantity(self, key, quantityRemove):
+    def decreaseQuantity(self, key, quantityRemove):
         #calculate hash key
         bucket_index= self.HashKey(key)% len(self.table)
         item= self.table[bucket_index]
@@ -83,15 +83,41 @@ class ChainingHashTable(HashTable):
             if key== item.Key and item.Quantity != 0:
                 #ERROR HANDLING: Removing more products than what is available
                 if item.Quantity < quantityRemove:
+                    print(" ")
                     print("ERROR: TRYING TO REMOVE TOO MANY ITEMS")
                     print("CURRENTLY AVAILABLE: ", item.Quantity)
                     return False
                 
                 item.Quantity-= quantityRemove
                 #Show new product quantity after update perform
+                print(" ")
+                print("Product: ", item.Name)
                 print("Product Quantity: ", item.Quantity)
                 return True
             item= item.next
+        print(" ")    
+        print("ERROR: PRODUCT NOT FOUND")
+        return False
+    
+     #Increase product quantity amount, when a product is being restock
+    def restock(self, key, quantityIncrease):
+        #calculate hash key
+        bucket_index= self.HashKey(key)% len(self.table)
+        item= self.table[bucket_index]
+        while item != None:
+            if key== item.Key:     
+                print(" ")
+                print("CURRENTLY AVAILABLE: ", item.Quantity)
+                
+                item.Quantity+= quantityIncrease
+                #Show new product quantity after update perform
+                print(" ")
+                print("Updated stock amount")
+                print("Product: ", item.Name)
+                print("Product Quantity: ", item.Quantity)
+                return True
+            item= item.next
+        print(" ")    
         print("ERROR: PRODUCT NOT FOUND")
         return False
          
