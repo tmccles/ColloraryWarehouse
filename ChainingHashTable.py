@@ -123,7 +123,11 @@ class ChainingHashTable(HashTable):
     
     #Returns the total amount of products in hashtable
     def totalNumberProduct():
-        total= len(self.table)
-        return total
+        bucket_index= self.HashKey(key)% len(self.table)
+        item= self.table[bucket_index]
+        while item != None:
+            count += 1
+            item= item.next
+        return count 
          
 
