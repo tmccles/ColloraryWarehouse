@@ -35,4 +35,6 @@ products.search(564)
 #test inventory levels of a product
 products.decreaseQuantity(345, 10)
 products.restock(135,100)
+print("  ")
+print("The total number of products in inventory: ", products.totalNumberProduct())
 

@@ -120,5 +120,9 @@ class ChainingHashTable(HashTable):
         print(" ")    
         print("ERROR: PRODUCT NOT FOUND")
         return False
+    
+    #Returns the total amount of products in hashtable
+    def totalNumberProduct():
+        return len(self.table)
          
 
