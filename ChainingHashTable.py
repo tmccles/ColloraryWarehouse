@@ -122,12 +122,14 @@ class ChainingHashTable(HashTable):
         return False
     
     #Returns the total amount of products in hashtable
-    def totalNumberProduct():
-        bucket_index= self.HashKey(key)% len(self.table)
-        item= self.table[bucket_index]
-        while item != None:
-            count += 1
-            item= item.next
+    def totalNumberProduct(self):
+        count= 0
+        for bucket in self.table:
+            item= bucket
+            #Tranverse thru buckets in the linked list
+            while item != None:
+                count += 1
+                item= item.next
         return count 
          
 
