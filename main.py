@@ -41,7 +41,7 @@ print("The total number of products in inventory: ", totalNumber)
 
 #Data Analysis Hash Table Features:
 Beginning= 415505
-Ending= 390160
+Ending= 400000
 Average= products.averageInventory(Beginning, Ending)
 print("The cost of average inventory: $", Average)
 
