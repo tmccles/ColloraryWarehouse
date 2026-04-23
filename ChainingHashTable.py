@@ -138,7 +138,7 @@ class ChainingHashTable(HashTable):
     #calculates the average inventory to analyze inventory's stock trends and carrying
     #costs
     def averageInventory(self, beginningInventory, endingInventory):
-        average= (beginningInventory/ endingInventory)/2
+        average= (beginningInventory + endingInventory)/2
         return average
     
     #calculates the cost of goods sold

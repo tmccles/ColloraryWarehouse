@@ -50,10 +50,7 @@ Goods= products.costOfGoods(Beginning, PurchaseAmount, Ending)
 print("Cost of Goods Sold: $", Goods)
 
 Days= products.daysOfInventory(Average, Goods)
-print("Days of Inventory: ", Days)
-
-InventoryDays= Days * 365
-print("Inventory days: ", InventoryDays)
+print("Days of Inventory: ", Days * 365)
 
 InventoryTurnover= Goods/Average
 print("Inventory Turnover: ", InventoryTurnover, "%")
