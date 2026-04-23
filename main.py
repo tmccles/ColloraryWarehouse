@@ -39,3 +39,23 @@ print("  ")
 totalNumber= products.totalNumberProduct()
 print("The total number of products in inventory: ", totalNumber)
 
+#Data Analysis Hash Table Features:
+Beginning= 415505
+Ending= 125310
+Average= products.averageInventory(Beginning, Ending)
+print("The cost of average inventory: $", Average)
+
+PurchaseAmount= 251345
+Goods= products.costOfGoods(Beginning, PurchaseAmount, Ending)
+print("Cost of Goods Sold: $", Goods)
+
+Days= products.daysOfInventory(Average, Goods)
+print("Days of Inventory: ", Days)
+
+InventoryDays= Days * 365
+print("Inventory days: ", InventoryDays)
+
+InventoryTurnover= Goods/Average
+print("Inventory Turnover: ", InventoryTurnover, "%")
+
+

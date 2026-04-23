@@ -132,5 +132,21 @@ class ChainingHashTable(HashTable):
                 count += 1
                 item= item.next
         return count 
-         
-
+    
+    #Data Analysis Functions
+    #These functions will help the company to analyze the cost of sitting inventory
+    #calculates the average inventory to analyze inventory's stock trends and carrying
+    #costs
+    def averageInventory(self, beginningInventory, endingInventory):
+        average= (beginningInventory/ endingInventory)/2
+        return average
+    
+    #calculates the cost of goods sold
+    def costOfGoods(self, beginningInventory, purchaseAmount, endingInventory):
+        COGS= beginningInventory + purchaseAmount - endingInventory
+        return COGS
+    
+    #calculates days inventory is sitting in the warehouse
+    def daysOfInventory(self, average, cogs):
+        days= average/cogs
+        return days
