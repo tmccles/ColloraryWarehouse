@@ -77,7 +77,13 @@ print(" ")
 print(" ")
 print("Shipping Cost Analysis")
 print(" ")
-
-
+OrderRecieved= date(2026, 8, 15)
+OrderPlaced= date(2026, 8, 5)
+ShippingTime= OrderRecieved - OrderPlaced
+print("Shipping Time: ", ShippingTime)
+SupplyDelay = 4
+ReorderDelay = 3
+TotalDelay= products.leadTime(SupplyDelay, ReorderDelay)
+print("Lead Time: ", TotalDelay)
 
 

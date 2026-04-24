@@ -2,6 +2,7 @@ import copy
 import math
 from HashTable import HashTable
 from ProductItem import ProductItem
+
 #This hash table uses the chaining technique
 #The initial capacity will be set to 1,000
 
@@ -165,11 +166,6 @@ class ChainingHashTable(HashTable):
     def shippingCost(self, baseRate, packingMaterial, labor, handlingFees):
         totalShipping= baseRate + packingMaterial + labor + handlingFees
         return totalShipping
-    
-    #calculates shipping times for products
-    def shippingTime(self, orderRecieved, orderPlaced):
-        totalTime= orderRecieved - orderPlaced
-        return totalTime
     
     #calculates the lead time for products
     def leadTime(self, supplyDelay, reorderDelay):
