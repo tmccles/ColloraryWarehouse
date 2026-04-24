@@ -3,6 +3,7 @@
 from HashTable import HashTable
 from ProductItem import ProductItem
 from ChainingHashTable import ChainingHashTable
+from datetime import date
     
 #main program
 products= ChainingHashTable()
