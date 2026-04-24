@@ -150,3 +150,28 @@ class ChainingHashTable(HashTable):
     def daysOfInventory(self, average, cogs):
         days= average/cogs
         return days
+    
+    #calculates total inventory value
+    def inventoryValue(self, Begin, NetPurchase, cogs):
+        ending= Begin + NetPurchase - cogs
+        return ending
+    
+    #calculates total inventory holding sum
+    def holdingSum(self, capitalCost, storageCost, serviceCost, riskCost):
+        total= capitalCost + storageCost + serviceCost + riskCost
+        return total
+    
+    #calculates the total shipping cost
+    def shippingCost(self, baseRate, packingMaterial, labor, handlingFees):
+        totalShipping= baseRate + packingMaterial + labor + handlingFees
+        return totalShipping
+    
+    #calculates shipping times for products
+    def shippingTime(self, orderRecieved, orderPlaced):
+        totalTime= orderRecieved - orderPlaced
+        return totalTime
+    
+    #calculates the lead time for products
+    def leadTime(self, supplyDelay, reorderDelay):
+        totalLeadTime= supplyDelay + reorderDelay
+        return totalLeadTime

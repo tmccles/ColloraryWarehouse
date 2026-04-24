@@ -38,7 +38,9 @@ products.restock(135,100)
 print("  ")
 totalNumber= products.totalNumberProduct()
 print("The total number of products in inventory: ", totalNumber)
-
+print(" ")
+print(" ")
+print("Cost Analysis of Sitting Inventory")
 #Data Analysis Hash Table Features:
 Beginning= 10000
 Ending= 3000
@@ -54,5 +56,28 @@ print("Days of Inventory: ", Days * 365)
 
 InventoryTurnover= Goods/Average
 print("Inventory Turnover: ", InventoryTurnover, "%")
+print(" ")
+print(" ")
+
+print("Inventory Storage Cost Analysis")
+capitalCost= 5000
+storageCost= 1500
+serviceCost= 2000
+riskCost= 1000
+netPurchase= PurchaseAmount
+totalInventoryValue= products.inventoryValue(Beginning, netPurchase,Goods)
+print("Total Inventory Value: ", totalInventoryValue)
+
+totalInventoryHoldingSum= products.holdingSum(capitalCost, storageCost, serviceCost, riskCost)
+print("Total Inventory Holding Sum: ", totalInventoryHoldingSum)
+
+InventoryHoldingCost= (totalInventoryHoldingSum/ totalInventoryValue) * 100
+print("Total Hold Cost Percentage: %", InventoryHoldingCost)
+print(" ")
+print(" ")
+print("Shipping Cost Analysis")
+print(" ")
+
+
 
 
