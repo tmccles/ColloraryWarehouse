@@ -35,3 +35,16 @@ class InvoiceQueue:
         self.frontIndex= (self.frontIndex + 1) % len(self.invoiceList)
         #Return invoice being removed
         return self.frontIndex
+    
+    #Resize the queue when its reaches maximum length
+    def resizeQueue(self):
+        #create new invoice queueList and copy existing queue invoices 
+        newQueueSize= len(self.invoiceList) * 2
+        if self.maxLength >= 0 and newQueueSize > self.maxLength:
+            newQueueSize= self.maxLength
+        newInvoiceList= [0] * newQueueSize
+        for i in range(self.queueLength):
+            invoiceIndex= (self.frontIndex + i) % len(self.invoiceList)
+        #Assign new queue list and reset frontIndex back to 0
+        self.invoiceList= newInvoiceList
+        self.frontIndex= 0
