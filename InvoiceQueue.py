@@ -34,4 +34,4 @@ class InvoiceQueue:
         #Decrease the frontIndex and queueLength by 1
         self.frontIndex= (self.frontIndex + 1) % len(self.invoiceList)
         #Return invoice being removed
-        return frontIndex
+        return self.frontIndex
