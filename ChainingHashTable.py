@@ -75,7 +75,19 @@ class ChainingHashTable(HashTable):
                 return item
             item= item.next
         return None #product not found
-    
+    #Search and return the name of the product 
+    def searchByName(self, key):
+        #calculate hash key to start search
+        bucket_index= self.HashKey(key) % len(self.table)
+        item= self.table[bucket_index]
+        while item != None:
+            if key== item.Key:
+                print("Product: ", item.Name)
+                print("Category: ", item.Category)
+                print("Cost: ", item.Cost)
+                return item
+            item= item.next
+        return None
     #Update product quantity amount, when a product is remove from inventory
     def decreaseQuantity(self, key, quantityRemove):
         #calculate hash key

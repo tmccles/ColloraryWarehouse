@@ -1,10 +1,14 @@
+from datetime import datetime
+from ChainingHashTable import ChainingHashTable
+from Order import Order
 #Array- base queue to hold all incoming invoices
-class InvoiceQueue:
+class InvoiceQueue(ChainingHashTable, Order):
     def __init__(self, maxLength= -1):
         self.invoiceList= [0]
         self.frontIndex= 0
         self.queueLength= 0
         self.maxLength= maxLength
+        self.now= datetime.now()
 
     #return the length of the queue
     def getQueueLength(self):
@@ -15,7 +19,8 @@ class InvoiceQueue:
         return self.maxLength
     
     #Push a created invoice into the queue
-    def enqueueInvoice(self, invoice):
+    def enqueueInvoice(self, order_number, product_number, quantity):
+
         if self.maxLength >= 0 and self.queueLength== self.maxLength:
             print("QUEUE IS FULL, NO ITEM CAN BE ADDED!")
             return False #This mean the queue is full
@@ -25,9 +30,18 @@ class InvoiceQueue:
         #new rear index
         self.rearIndex= (self.frontIndex + self.queueLength) % len(self.invoiceList)
         #Push invoice into back of queue
-        self.invoiceList[self.rearIndex]= invoice
+        order= Order(order_number, product_number, quantity)
+        self.invoiceList[self.rearIndex]= order
+        self.decreaseQuantity(product_number, quantity)
+        #setting the time an order is created and placed in the queue
+        ts= datetime.now().timestamp()
         #increase length of queue
         self.queueLength += 1
+        print ("Order: ", order_number)
+        self.searchByName(product_number)
+        print("Quantity: ", quantity)
+        print("Time: ", ts)
+        print("This order has been placed in the queue")
         return True
     
     #Remove an invoice from the queue
