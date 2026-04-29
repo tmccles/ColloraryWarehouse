@@ -39,9 +39,9 @@ class ChainingHashTable(HashTable):
         
         #Check the existence of the key
         try:
-            self.exists= self.search(key)
-            self.exists.quantity += quantity
-            return
+            existing= self.search(key)
+            existing.quantity += quantity
+            return True
         except KeyNotFoundError:
             pass
         #Calculates the hash key for the bucket index
