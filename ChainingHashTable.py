@@ -39,8 +39,8 @@ class ChainingHashTable(HashTable):
         
         #Check the existence of the key
         try:
-            exists= self.search(key)
-            exists.quantity += quantity
+            self.exists= self.search(key)
+            self.exists.quantity += quantity
             return
         except KeyNotFoundError:
             pass
