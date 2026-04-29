@@ -58,7 +58,7 @@ queueOrder.enqueueInvoice(1007, 130, 4)
 queueOrder.enqueueInvoice(1008, 140, 8)
 
 #remove order invoices from the queue
-removed= queue.dequeueInvoice()
+removed= queueOrder.dequeueInvoice()
 if removed:
     print(f"Remove Order: #{removed.orderNumber}| Product: #{removed.productNumber}| Qty: {removed.quantity}")
     print("Timed Removed: #", ts)

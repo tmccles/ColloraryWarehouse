@@ -20,7 +20,7 @@ class InvoiceQueue(ChainingHashTable):
         return self.maxLength
     
     #Push a created invoice into the queue
-    def enqueueInvoice(self, order_number, product_number, quantity):
+    def enqueueInvoice(self,order_number, product_number, quantity):
 
         if self.maxLength >= 0 and self.queueLength== self.maxLength:
             print("QUEUE IS FULL, NO ITEM CAN BE ADDED!")
