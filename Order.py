@@ -1,6 +1,6 @@
 from datetime import datetime
 from ProductItem import ProductItem
-from InvoiceQueue import InvoiceQueue
+
 
 class Order(ProductItem):
     def __init__(self, order_number, product_number, quantity):
