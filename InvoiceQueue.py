@@ -35,6 +35,9 @@ class InvoiceQueue(ChainingHashTable):
         self.invoiceList[self.rearIndex]= order
         #setting the time an order is created and placed in the queue
         ts= datetime.now().timestamp()
+        dt= datetime.fromtimestamp(ts)
+        formatted= dt.strftime("%m/%d/%Y, %H:%M:%S")
+        print(formatted)
         #increase length of queue
         self.queueLength += 1
         print ("Order: ", order_number)
