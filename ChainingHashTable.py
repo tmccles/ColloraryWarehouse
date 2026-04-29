@@ -37,13 +37,6 @@ class ChainingHashTable(HashTable):
         if quantity < 0:
             raise HashTableError("Quantity must be greater than zero")
         
-        #Check the existence of the key
-        try:
-            existing= self.search(key)
-            existing.quantity += quantity
-            return True
-        except KeyNotFoundError:
-            pass
         #Calculates the hash key for the bucket index
         bucket_index= self.HashKey(key) % len(self.table)
 
