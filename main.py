@@ -94,7 +94,7 @@ if removed:
     dt= datetime.fromtimestamp(ts)
     formatted= dt.strftime("%m/%d/%Y, %H:%M:%S")
     print(f"Remove Order: #{removed.orderNumber}| Product: #{removed.productNumber}| Qty: {removed.quantity}")
-    print("Timed Removed: #", formatted)
+    print("Timed Removed: ", formatted)
 print(" ")
 print(" ")
 
