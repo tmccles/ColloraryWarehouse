@@ -9,7 +9,7 @@ from Order import Order
     
 #main program
 products= ChainingHashTable()
-queue= InvoiceQueue()
+queueOrder= InvoiceQueue()
 ts= datetime.now().timestamp()
 #populates the hash table
 products.insert(101, "Iphone 15", "Apple", 100,1000)
@@ -48,14 +48,14 @@ print(" ")
 print("Cost Analysis of Sitting Inventory")
 
 #Place order invoices into the queue
-queue.enqueueInvoice(1001, 564, 2)
-queue.enqueueInvoice(1002, 231, 5)
-queue.enqueueInvoice(1003, 145, 10)
-queue.enqueueInvoice(1004, 135, 15)
-queue.enqueueInvoice(1005, 101, 20)
-queue.enqueueInvoice(1006, 103, 7)
-queue.enqueueInvoice(1007, 130, 4)
-queue.enqueueInvoice(1008, 140, 8)
+queueOrder.enqueueInvoice(1001, 564, 2)
+queueOrder.enqueueInvoice(1002, 231, 5)
+queueOrder.enqueueInvoice(1003, 145, 10)
+queueOrder.enqueueInvoice(1004, 135, 15)
+queueOrder.enqueueInvoice(1005, 101, 20)
+queueOrder.enqueueInvoice(1006, 103, 7)
+queueOrder.enqueueInvoice(1007, 130, 4)
+queueOrder.enqueueInvoice(1008, 140, 8)
 
 #remove order invoices from the queue
 removed= queue.dequeueInvoice()
