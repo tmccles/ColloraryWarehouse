@@ -1,6 +1,7 @@
 from datetime import datetime
 from ChainingHashTable import ChainingHashTable
 from Order import Order
+from ProductItem import ProductItem
 #Array- base queue to hold all incoming invoices
 class InvoiceQueue(ChainingHashTable, Order):
     def __init__(self, maxLength= -1):
