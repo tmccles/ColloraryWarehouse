@@ -3,7 +3,7 @@ from ChainingHashTable import ChainingHashTable
 from Order import Order
 from ProductItem import ProductItem
 #Array- base queue to hold all incoming invoices
-class InvoiceQueue(ChainingHashTable, Order):
+class InvoiceQueue(ChainingHashTable):
     def __init__(self, maxLength= -1):
         self.invoiceList= [0]
         self.frontIndex= 0
