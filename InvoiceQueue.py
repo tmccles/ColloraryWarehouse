@@ -38,7 +38,6 @@ class InvoiceQueue(ChainingHashTable):
         #increase length of queue
         self.queueLength += 1
         print ("Order: ", order_number)
-        self.searchByName(product_number)
         print("Quantity: ", quantity)
         print("Time: ", ts)
         print("This order has been placed in the queue")
