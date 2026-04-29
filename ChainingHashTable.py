@@ -3,6 +3,17 @@ import math
 from HashTable import HashTable
 from ProductItem import ProductItem
 
+#Exception handling for hash table
+class HashTableError(Exception):
+    pass
+class KeyNotFoundError(HashTableError):
+    pass
+class DuplicateKeyError(HashTableError):
+    pass
+class InvalidKeyError(HashTableError):
+    pass
+class ProductNotFoundError(HashTableError):
+    pass
 #This hash table uses the chaining technique
 #The initial capacity will be set to 1,000
 
@@ -19,6 +30,20 @@ class ChainingHashTable(HashTable):
     #Check for duplicate, if found increase product quantity by one
     #Return True if product is appended or quantity updated
     def insert (self, key, name, category, quantity, cost):
+        #Verify key valid
+        if key is None or not isinstance(key,int):
+            raise InvalidKeyError(f"Invalid Key: {key}")
+        #Verify quantity is greater than zero
+        if quantity < 0:
+            raise HashTableError("Quantity must be greater than zero")
+        
+        #Check the existence of the key
+        try:
+            exists= self.search(key)
+            exists.quantity += quantity
+            return
+        except KeyNotFoundError:
+            pass
         #Calculates the hash key for the bucket index
         bucket_index= self.HashKey(key) % len(self.table)
 
@@ -43,6 +68,9 @@ class ChainingHashTable(HashTable):
     #Remove an item from the hash table
     #Traverse the linked list to find key/product pair
     def remove(self, key):
+        #Verify key valid
+        if key is None or not isinstance(key,int):
+            raise InvalidKeyError(f"Invalid Key: {key}")
         #get bucket index to start traversing the linked list
         bucket_index= self.HashKey(key) % len(self.table)
         item= self.table[bucket_index]
@@ -59,10 +87,13 @@ class ChainingHashTable(HashTable):
                 return True
             previous= item
             item= item.next
-        return False #key was not located in linked list
-
+        raise KeyNotFoundError(f"Cannot remove Key {key} does not exist")
+    
     #Find a specific key and print product information
     def search(self, key):
+        #Verify key valid
+        if key is None or not isinstance(key,int):
+            raise InvalidKeyError(f"Invalid Key: {key}")
         #calculate hash key to start search
         bucket_index= self.HashKey(key) % len(self.table)
         item= self.table[bucket_index]
@@ -74,9 +105,13 @@ class ChainingHashTable(HashTable):
                 print("Cost: ", item.Cost)
                 return item
             item= item.next
-        return None #product not found
+        raise ProductNotFoundError(f"Product not found in hash table")
+    
     #Search and return the name of the product 
     def searchByName(self, key):
+        #Verify key valid
+        if key is None or not isinstance(key,int):
+            raise InvalidKeyError(f"Invalid Key: {key}")
         #calculate hash key to start search
         bucket_index= self.HashKey(key) % len(self.table)
         item= self.table[bucket_index]
@@ -87,10 +122,17 @@ class ChainingHashTable(HashTable):
                 print("Cost: ", item.Cost)
                 return item
             item= item.next
-        return None
+        raise KeyNotFoundError(f"Key {key} not found in hash table")
     
     #Update product quantity amount, when a product is remove from inventory
     def decreaseQuantity(self, key, quantityRemove):
+        #Verify key valid
+        if key is None or not isinstance(key,int):
+            raise InvalidKeyError(f"Invalid Key: {key}")
+        
+        #check if there is not enough to remove the requested quantity
+        if quantityRemove <= 0:
+            raise HashTableError("Quantity decrease must be positive")
         #calculate hash key
         bucket_index= self.HashKey(key)% len(self.table)
         item= self.table[bucket_index]
@@ -99,10 +141,8 @@ class ChainingHashTable(HashTable):
                 #ERROR HANDLING: Removing more products than what is available
                 if item.Quantity < quantityRemove:
                     print(" ")
-                    print("ERROR: TRYING TO REMOVE TOO MANY ITEMS")
-                    print("CURRENTLY AVAILABLE: ", item.Quantity)
-                    return False
-                
+                    raise HashTableError(f"Not enought in stock: Currently have {item.Quantity}, need {quantityRemove} ")
+                 
                 item.Quantity-= quantityRemove
                 #Show new product quantity after update perform
                 print(" ")
@@ -110,12 +150,14 @@ class ChainingHashTable(HashTable):
                 print("Product Quantity: ", item.Quantity)
                 return True
             item= item.next
-        print(" ")    
-        print("ERROR: PRODUCT NOT FOUND")
-        return False
+        print(" ")   
+        raise KeyNotFoundError(f"Key {key} not found in hash table")
     
      #Increase product quantity amount, when a product is being restock
     def restock(self, key, quantityIncrease):
+        #Verify key valid
+        if key is None or not isinstance(key,int):
+            raise InvalidKeyError(f"Invalid Key: {key}")
         #calculate hash key
         bucket_index= self.HashKey(key)% len(self.table)
         item= self.table[bucket_index]
@@ -134,7 +176,7 @@ class ChainingHashTable(HashTable):
             item= item.next
         print(" ")    
         print("ERROR: PRODUCT NOT FOUND")
-        return False
+        raise KeyNotFoundError(f"Key {key} not found in hash table")
     
     #Returns the total amount of products in hashtable
     def totalNumberProduct(self):
