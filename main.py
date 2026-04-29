@@ -102,8 +102,8 @@ print(" ")
 print(" ")
 print("Shipping Cost Analysis")
 print(" ")
-OrderRecieved= date(2026, 8, 15)
-OrderPlaced= date(2026, 8, 5)
+OrderRecieved= datetime(2026, 8, 15)
+OrderPlaced= datetime(2026, 8, 5)
 ShippingTime= OrderRecieved - OrderPlaced
 print("Shipping Time: ", ShippingTime)
 SupplyDelay = 4
