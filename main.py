@@ -52,15 +52,41 @@ quantity= 2
 productKey= 564
 queueOrder.enqueueInvoice(1001, productKey, quantity)
 products.decreaseQuantity(productKey, quantity)
+
 quantity= 5
 productKey= 231
-queueOrder.enqueueInvoice(1002, 231, 5)
-queueOrder.enqueueInvoice(1003, 145, 10)
-queueOrder.enqueueInvoice(1004, 135, 15)
-queueOrder.enqueueInvoice(1005, 101, 20)
-queueOrder.enqueueInvoice(1006, 103, 7)
-queueOrder.enqueueInvoice(1007, 130, 4)
-queueOrder.enqueueInvoice(1008, 140, 8)
+queueOrder.enqueueInvoice(1002, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
+
+quantity= 10
+productKey= 145
+queueOrder.enqueueInvoice(1003, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
+
+quantity= 15
+productKey= 135
+queueOrder.enqueueInvoice(1004, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
+
+quantity= 20
+productKey= 101
+queueOrder.enqueueInvoice(1005, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
+
+quantity= 7
+productKey= 103
+queueOrder.enqueueInvoice(1006, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
+
+quantity= 4
+productKey= 130
+queueOrder.enqueueInvoice(1007, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
+
+quantity= 8
+productKey= 140
+queueOrder.enqueueInvoice(1008, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
 
 #remove order invoices from the queue
 removed= queueOrder.dequeueInvoice()
