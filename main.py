@@ -5,6 +5,7 @@ from ProductItem import ProductItem
 from ChainingHashTable import ChainingHashTable
 from datetime import datetime
 from InvoiceQueue import InvoiceQueue
+from Order import Order
     
 #main program
 products= ChainingHashTable()
