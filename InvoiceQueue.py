@@ -37,12 +37,11 @@ class InvoiceQueue(ChainingHashTable):
         ts= datetime.now().timestamp()
         dt= datetime.fromtimestamp(ts)
         formatted= dt.strftime("%m/%d/%Y, %H:%M:%S")
-        print(formatted)
         #increase length of queue
         self.queueLength += 1
         print ("Order: ", order_number)
         print("Quantity: ", quantity)
-        print("Time: ", ts)
+        print("Time: ", formatted)
         print("This order has been placed in the queue")
         return True
     
