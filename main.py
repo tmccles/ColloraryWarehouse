@@ -48,7 +48,12 @@ print(" ")
 print("Cost Analysis of Sitting Inventory")
 
 #Place order invoices into the queue
-queueOrder.enqueueInvoice(1001, 564, 2)
+quantity= 2
+productKey= 564
+queueOrder.enqueueInvoice(1001, productKey, quantity)
+products.decreaseQuantity(productKey, quantity)
+quantity= 5
+productKey= 231
 queueOrder.enqueueInvoice(1002, 231, 5)
 queueOrder.enqueueInvoice(1003, 145, 10)
 queueOrder.enqueueInvoice(1004, 135, 15)

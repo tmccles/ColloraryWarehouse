@@ -33,7 +33,6 @@ class InvoiceQueue(ChainingHashTable):
         #Push invoice into back of queue
         order= Order(order_number, product_number, quantity)
         self.invoiceList[self.rearIndex]= order
-        self.decreaseQuantity(product_number, quantity)
         #setting the time an order is created and placed in the queue
         ts= datetime.now().timestamp()
         #increase length of queue
