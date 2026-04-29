@@ -88,6 +88,7 @@ class ChainingHashTable(HashTable):
                 return item
             item= item.next
         return None
+    
     #Update product quantity amount, when a product is remove from inventory
     def decreaseQuantity(self, key, quantityRemove):
         #calculate hash key
