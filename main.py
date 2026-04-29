@@ -3,10 +3,14 @@
 from HashTable import HashTable
 from ProductItem import ProductItem
 from ChainingHashTable import ChainingHashTable
-from datetime import date
+from datetime import datetime
+from Order import Order
+from InvoiceQueue import InvoiceQueue
     
 #main program
 products= ChainingHashTable()
+queue= InvoiceQueue()
+ts= datetime.now().timestamp()
 #populates the hash table
 products.insert(101, "Iphone 15", "Apple", 100,1000)
 products.insert(102, "Samsung Galaxy 24", "Samsung", 120, 1000)
@@ -42,7 +46,27 @@ print("The total number of products in inventory: ", totalNumber)
 print(" ")
 print(" ")
 print("Cost Analysis of Sitting Inventory")
+
+#Place order invoices into the queue
+queue.enqueueInvoice(1001, 564, 2)
+queue.enqueueInvoice(1002, 231, 5)
+queue.enqueueInvoice(1003, 145, 10)
+queue.enqueueInvoice(1004, 135, 15)
+queue.enqueueInvoice(1005, 101, 20)
+queue.enqueueInvoice(1006, 103, 7)
+queue.enqueueInvoice(1007, 130, 4)
+queue.enqueueInvoice(1008, 140, 8)
+
+#remove order invoices from the queue
+removed= queue.dequeueInvoice()
+if removed:
+    print(f"Remove Order: #{removed.orderNumber}| Product: #{removed.productNumber}| Qty: {removed.quantity}")
+    print("Timed Removed: #", ts)
+print(" ")
+print(" ")
+
 #Data Analysis Hash Table Features:
+print("DATA ANALYSIS OF INVENTORY")
 Beginning= 10000
 Ending= 3000
 Average= products.averageInventory(Beginning, Ending)
