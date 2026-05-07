@@ -23,8 +23,14 @@ class ChainingHashTable(HashTable):
         self.table= [None] *self.initialCapacity
         
 
-    def _len_(self):
-        return len(self.table)
+    def __len__(self):
+        count=0 
+        for bucket in self.table:
+            item= bucket
+            while item is not None:
+                count += 1
+                item= item.next
+        return count
     
     #Insert a new product into the hash table
     #Check for duplicate, if found increase product quantity by one
