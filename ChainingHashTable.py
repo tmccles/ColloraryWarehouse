@@ -14,6 +14,8 @@ class InvalidKeyError(HashTableError):
     pass
 class ProductNotFoundError(HashTableError):
     pass
+class InvalidZeroError (HashTableError):
+    pass
 #This hash table uses the chaining technique
 #The initial capacity will be set to 1,000
 
@@ -193,26 +195,42 @@ class ChainingHashTable(HashTable):
     #calculates the average inventory to analyze inventory's stock trends and carrying
     #costs
     def averageInventory(self, beginningInventory, endingInventory):
+        if beginningInventory <= 0:
+            raise InvalidZeroError(f"The beginning inventory values must be greater than zero")
         average= (beginningInventory + endingInventory)/2
         return average
     
     #calculates the cost of goods sold
     def costOfGoods(self, beginningInventory, purchaseAmount, endingInventory):
+        if beginningInventory <= 0:
+            raise InvalidZeroError(f"beginning inventory value must be greater than zero")
+        if purchaseAmount <=0:
+            raise InvalidZeroError(f"The purchase amount must be greater than zero")
         COGS= beginningInventory + purchaseAmount - endingInventory
         return COGS
     
     #calculates days inventory is sitting in the warehouse
     def daysOfInventory(self, average, cogs):
+        if cogs <= 0:
+            raise InvalidZeroError(f"COGS must be greater than zero")
         days= average/cogs
         return days
     
     #calculates total inventory value
     def inventoryValue(self, Begin, NetPurchase, cogs):
+        if Begin <= 0:
+            raise InvalidZeroError(f"Begin value must be greater than zero")
+        if NetPurchase <=0:
+            raise InvalidZeroError(f"NetPurchase value must be greater than zero")
+        if cogs <= 0:
+            raise InvalidZeroError(f"COGS value must be greater than zero")
         ending= Begin + NetPurchase - cogs
         return ending
     
     #calculates total inventory holding sum
     def holdingSum(self, capitalCost, storageCost, serviceCost, riskCost):
+        if capitalCost <= 0 or storageCost <= 0 or serviceCost <= 0 or riskCost <= 0:
+            raise InvalidZeroError(f"All values must be greater than zero")
         total= capitalCost + storageCost + serviceCost + riskCost
         return total
     
