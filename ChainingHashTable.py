@@ -237,9 +237,13 @@ class ChainingHashTable(HashTable):
     #calculates the total shipping cost
     def shippingCost(self, baseRate, packingMaterial, labor, handlingFees):
         totalShipping= baseRate + packingMaterial + labor + handlingFees
+        if totalShipping <= 0:
+            raise InvalidZeroError(f"Total Shipping cost should be greater than zero")
         return totalShipping
     
     #calculates the lead time for products
     def leadTime(self, supplyDelay, reorderDelay):
         totalLeadTime= supplyDelay + reorderDelay
+        if totalLeadTime <= 0:
+            raise InvalidZeroError(f"The total lead time should be greater than zero")
         return totalLeadTime
