@@ -2,6 +2,13 @@ from datetime import datetime
 from ChainingHashTable import ChainingHashTable
 from Order import Order
 from ProductItem import ProductItem
+
+#Exception handling classes
+class InvoiceQueueError(Exception):
+    pass
+class InvalidQueueSize(InvoiceQueueError):
+    pass
+
 #Array- base queue to hold all incoming invoices
 class InvoiceQueue(ChainingHashTable):
     def __init__(self, maxLength= -1):
@@ -13,6 +20,8 @@ class InvoiceQueue(ChainingHashTable):
 
     #return the length of the queue
     def getQueueLength(self):
+        if self.queueLength < 0:
+            raise InvalidQueueSize(f"The queue length must be greater than zero")
         return self.queueLength
     
     #Return the maximum length of the invoice queue
@@ -59,6 +68,7 @@ class InvoiceQueue(ChainingHashTable):
         if self.queueLength== 0:
             self.frontIndex= 0
             self.rearIndex= -1
+        print("Order has been removed from the queue")
         #Return invoice being removed
         return frontInvoice
     
