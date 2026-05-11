@@ -8,6 +8,14 @@ class InvoiceQueueError(Exception):
     pass
 class InvalidQueueSize(InvoiceQueueError):
     pass
+class QueueValueError(InvoiceQueueError):
+    pass
+class QueueOverflowError(InvoiceQueueError):
+    pass
+class QueueMemoryError(InvoiceQueueError):
+    pass
+class QueueRuntimeError(InvoiceQueueError):
+    pass
 
 #Array- base queue to hold all incoming invoices
 class InvoiceQueue(ChainingHashTable):
@@ -74,14 +82,31 @@ class InvoiceQueue(ChainingHashTable):
     
     #Resize the queue when its reaches maximum length
     def resizeQueue(self):
+        if self.invoiceList is None or self.queueLength < 0:
+            raise QueueValueError(f"Queue cannot be empty and length cannot be negative")
+        if self.queueLength > len(self.invoiceList):
+            raise QueueValueError(f"queueLength resize failed because queueLength is greater than invoiceList size")
+        if self.maxLength >= 0 and len(self.invoiceList) >= self.maxLength:
+            raise QueueOverflowError(f"Queue overflow, the queue is at maximum length")
         #create new invoice queueList and copy existing queue invoices 
+        #compute new size
         newQueueSize= len(self.invoiceList) * 2
         if self.maxLength >= 0 and newQueueSize > self.maxLength:
             newQueueSize= self.maxLength
-        newInvoiceList= [0] * newQueueSize
-        for i in range(self.queueLength):
-            invoiceIndex= (self.frontIndex + i) % len(self.invoiceList)
-            newInvoiceList[i]= self.invoiceList[invoiceIndex]
+        if newQueueSize <= len(self.invoiceList):
+            raise QueueRuntimeError(f"Resize failed new queue size must be greater than invoiceList size")
+        #memory reallocation
+        try:
+            newInvoiceList= [0] * newQueueSize
+        except Exception as e:
+            raise QueueMemoryError(f"Not enough memory available for reallocation")
+        #copy orders to new invoice queue
+        try:
+            for i in range(self.queueLength):
+                invoiceIndex= (self.frontIndex + i) % len(self.invoiceList)
+                newInvoiceList[i]= self.invoiceList[invoiceIndex]
+        except Exception as e:
+            raise QueueRuntimeError(f"Failed to copy invoices to new queue") 
         #Assign new queue list and reset frontIndex back to 0
         self.invoiceList= newInvoiceList
         self.frontIndex= 0
