@@ -13,32 +13,52 @@ queueOrder= InvoiceQueue()
 ts= datetime.now().timestamp()
 #populates the hash table
 products.insert(101, "Iphone 15", "Apple", 100,1000)
+print("Product 101 has been added")
 products.insert(102, "Samsung Galaxy 24", "Samsung", 120, 1000)
+print("Product 102 has been added")
 products.insert(103, "Macbook Pro", "Apple", 45, 2000)
+print ("Product 103 has been added")
 products.insert(123, "HP Laptop", "HP", 87, 200)
+print("Product 123 has been added")
 products.insert(130, "Apple iWatch Series 7", "Apple", 34, 300)
+print("Product 130 has been added")
 products.insert(135, "LG Tablet", "Android", 76, 200)
+print("Product 135 has been added")
 products.insert(140, "Netbook", "Android", 123, 150)
+print("Product 140 has been added")
 products.insert(145, "Stylus Pen", "Samsung", 32, 100)
+print("Product 145 has been added")
 products.insert(110, "Apple Pen", "Apple", 65, 125)
+print("Product 110 has been added")
 products.insert(114, "Samsung Watch", "Samsung", 78, 250)
+print("Product 114 has been added")
 products.insert(231, "Eastsport", "Backpack", 75, 65)
+print("Product 231 has been added")
 products.insert(345, "Addidas", "Backpack", 45, 85)
+print("Product 345 has been added")
 products.insert(564, "Nike Sport", "Backpack", 43, 110)
+print("Product 564 has been added")
 print("Table has been successfully populated")
+print(" ")
 
 
 #test that an item has been successfully remove from the table
+print("Demostrates if product 110 has been successfully removed")
 removal= products.remove(110)
 if removal== True:
     print("Item was successfully remove from table")
 else:
     print("Item was not remove from table")
-
+print(" ")
 #test the search function of the hash table
+print("Demostrate the search function works")
 products.search(564)
+print(" ")
 #test inventory levels of a product
+print("Demostrate the decreaseQuantity works correctly")
 products.decreaseQuantity(345, 10)
+print(" ")
+print("Demostrate restocks works correctly")
 products.restock(135,100)
 print("  ")
 totalNumber= products.totalNumberProduct()
@@ -147,6 +167,12 @@ SupplyDelay = 4
 ReorderDelay = 3
 TotalDelay= products.leadTime(SupplyDelay, ReorderDelay)
 print("Lead Time: ", TotalDelay)
+
+#Error handling testing is performed
+print(" ")
+print("Error handling testing")
+products.insert(-584, "Addidas", "Backpack", 43, 110)
+
 
 
 
