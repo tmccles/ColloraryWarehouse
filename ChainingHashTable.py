@@ -53,6 +53,9 @@ class ChainingHashTable(HashTable):
         #Verify key valid
         if key is None or not isinstance(key,int):
             raise InvalidKeyError(f"Invalid Key: {key}")
+        #check for negative key input
+        if key <= 0:
+            raise InvalidKeyError(f"Negative key value: {key}")
         #Verify quantity is greater than zero
         if quantity < 0:
             raise HashTableError("Quantity must be greater than zero")
