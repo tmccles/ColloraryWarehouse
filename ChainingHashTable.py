@@ -5,17 +5,29 @@ from ProductItem import ProductItem
 
 #Exception handling for hash table
 class HashTableError(Exception):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class KeyNotFoundError(HashTableError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class DuplicateKeyError(HashTableError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class InvalidKeyError(HashTableError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class ProductNotFoundError(HashTableError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class InvalidZeroError (HashTableError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+        
 #This hash table uses the chaining technique
 #The initial capacity will be set to 1,000
 
