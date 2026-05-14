@@ -8,26 +8,26 @@ class HashTableError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class KeyNotFoundError(HashTableError):
+class KeyNotFoundError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class DuplicateKeyError(HashTableError):
+class DuplicateKeyError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class InvalidKeyError(HashTableError):
+class InvalidKeyError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class ProductNotFoundError(HashTableError):
+class ProductNotFoundError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class InvalidZeroError (HashTableError):
+class InvalidZeroError (Exception):
     def __init__(self, message):
         super().__init__(message)
-        
+
 #This hash table uses the chaining technique
 #The initial capacity will be set to 1,000
 
