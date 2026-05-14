@@ -5,17 +5,28 @@ from ProductItem import ProductItem
 
 #Exception handling classes
 class InvoiceQueueError(Exception):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class InvalidQueueSize(InvoiceQueueError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class QueueValueError(InvoiceQueueError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class QueueOverflowError(InvoiceQueueError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+
 class QueueMemoryError(InvoiceQueueError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
+        
 class QueueRuntimeError(InvoiceQueueError):
-    pass
+    def __init__(self, message):
+        super().__init__(message)
 
 #Array- base queue to hold all incoming invoices
 class InvoiceQueue(ChainingHashTable):
