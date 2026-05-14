@@ -65,7 +65,6 @@ totalNumber= products.totalNumberProduct()
 print("The total number of products in inventory: ", totalNumber)
 print(" ")
 print(" ")
-print("Cost Analysis of Sitting Inventory")
 
 #Place order invoices into the queue
 try:
@@ -119,7 +118,6 @@ if removed:
     formatted= dt.strftime("%m/%d/%Y, %H:%M:%S")
     print(f"Remove Order: #{removed.orderNumber}| Product: #{removed.productNumber}| Qty: {removed.quantity}")
     print("Timed Removed: ", formatted)
-print(" ")
 print(" ")
 
 #Data Analysis Hash Table Features:
